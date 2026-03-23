@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LawLoom - Legal Case Reference</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script>
-        history.scrollRestoration = "manual";
-        window.onbeforeunload = function () { window.scrollTo(0, 0); }
-    </script>
 </head>
-
 <body>
+    <!-- NAV -->
     <div class="wrapper">
         <nav class="nav">
             <div class="logo">
-                <div class="logo-circle">⚖</div>
+                <div class="logo-circle"><img src="img/logo.jpg" alt="LawLoom"></div>
                 <h1>LawLoom</h1>
             </div>
             <div class="nav-menu">
                 <ul>
-                    <li><a href='#' class="link active">Home</a></li>
-                    <li><a href='#' class="link">About</a></li>
-                    <li><a href='#' class="link">Contact</a></li>
+                    <li><a href="#home"    class="link active" data-section="home">Home</a></li>
+                    <li><a href="#about"   class="link"        data-section="about">About</a></li>
+                    <li><a href="#contact" class="link"        data-section="contact">Contact</a></li>
                 </ul>
             </div>
             <div class="nav-button">
-                <button id="loginBtn" class="btn" onclick="openForm('login')">Sign In</button>
+                <button id="loginBtn"    class="btn"           onclick="openForm('login')">Sign In</button>
                 <button id="registerBtn" class="btn white-btn" onclick="openForm('register')">Sign Up</button>
             </div>
         </nav>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-section">
+    <!-- HERO -->
+    <section class="hero-section" id="home">
         <div class="hero-content">
             <div class="hero-badge">
                 <i class='bx bxs-scale'></i>
@@ -52,17 +46,112 @@
                 relevant precedents — built for legal professionals.
             </p>
             <div class="hero-buttons">
-                <button class="cta-primary" onclick="openForm('register')">Get Started</button>
+                <button class="cta-primary"   onclick="openForm('register')">Get Started</button>
                 <button class="cta-secondary" onclick="openForm('login')">Sign In</button>
             </div>
         </div>
     </section>
 
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+        <h1 class="about-heading">About <span>LawLoom</span></h1>
+        <p class="about-subtitle">A comprehensive legal research tool designed for law professionals and students</p>
+        <div class="cards-wrapper">
+            <div class="about-card">
+                <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zM7 6h13v10H7V6zm0 12h13v1a1 1 0 0 1-1 1H7a1 1 0 0 1 0-2zM3 16V5a2 2 0 0 1 2-2h1v14H5a2 2 0 0 0-2 1v-2zm6-8h8v2H9V8zm0 4h8v2H9v-2z"/>
+                    </svg>
+                </div>
+                <h3>Smart Search</h3>
+                <p>Our intelligent search engine matches across case names, articles, verdicts, and relevant cases with real-time autocomplete suggestions.</p>
+            </div>
+            <div class="about-card">
+                <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/>
+                    </svg>
+                </div>
+                <h3>AI Summary</h3>
+                <p>Get concise, AI-powered summaries of complex legal documents, case judgments, and statutes — saving you hours of manual reading and analysis.</p>
+            </div>
+            <div class="about-card">
+                <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 5v6c0 5.25 3.75 10.15 8 11.25C16.25 21.15 20 16.25 20 11V5l-8-3zm0 2.18l6 2.25V11c0 4.08-2.91 7.91-6 9.11-3.09-1.2-6-5.03-6-9.11V6.43l6-2.25zm-1 10.57l4.24-4.24-1.41-1.42L11 11.92l-1.83-1.83-1.41 1.41L11 14.75z"/>
+                    </svg>
+                </div>
+                <h3>Easy Management</h3>
+                <p>Add, edit, and organize your legal cases with an intuitive interface. All data is stored securely in your personal database.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+        <h1 class="contact-heading">Contact <span>Us</span></h1>
+        <p class="contact-subtitle">Get in touch for legal consultations or technical support</p>
+        <div class="contact-wrapper">
+            <div class="contact-info-card">
+                <h2 class="info-title">Get In Touch</h2>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <span class="info-label">Email</span>
+                        <span class="info-value">contact@lawloom.com</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <span class="info-label">Phone</span>
+                        <span class="info-value">+91 9876 543 210</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <span class="info-label">Address</span>
+                        <span class="info-value">Supreme Court Lane, New Delhi, India</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-card">
+                <h2 class="form-title">Send a Message</h2>
+                <div class="form-group">
+                    <input type="text"  id="contact-name"    class="contact-input" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="contact-email"   class="contact-input" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <textarea id="contact-message" class="contact-input contact-textarea" placeholder="Your Message"></textarea>
+                </div>
+                <button class="send-btn" id="sendBtn">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-logo">
+            <div class="footer-logo-circle">⚖</div>
+            <span class="footer-logo-text">Law<span class="footer-logo-gold">Loom</span></span>
+        </div>
+        <p class="footer-copy">&copy; 2026 LawLoom. All rights reserved.</p>
+    </footer>
+
     <!-- MODAL OVERLAY -->
     <div class="form-shadow" id="formShadow" onclick="closeForm()"></div>
 
     <!-- AUTH MODAL -->
-    <div class="auth-container">
+    <div class="auth-container" id="authContainer">
         <span class="close-btn" onclick="closeForm()">×</span>
 
         <!-- Left Panel -->
@@ -74,7 +163,7 @@
                 <h1 class="welcome-title">Welcome Back, <span class="counsellor">Counsellor</span></h1>
                 <p class="welcome-text">
                     Access your legal case database, manage precedents,<br>
-                    and stay ahead with Lawyer Guide.
+                    and stay ahead with LawLoom.
                 </p>
             </div>
         </div>
@@ -83,10 +172,10 @@
         <div class="auth-right-panel">
             <div class="brand-header">
                 <i class='bx bxs-scale'></i>
-                <span>Lawyer Guide</span>
+                <span>LawLoom</span>
             </div>
 
-            <!-- LOGIN FORM -->
+            <!-- LOGIN -->
             <div class="login-container" id="login">
                 <div class="form-header">
                     <h2>Sign In</h2>
@@ -104,9 +193,8 @@
                             <i class='bx bx-show password-toggle'></i>
                         </div>
                     </div>
-                    <button class="submit-btn">
-                        <i class='bx bx-log-in'></i>
-                        Sign In
+                    <button class="submit-btn" id="loginSubmitBtn">
+                        <i class='bx bx-log-in'></i> Sign In
                     </button>
                     <div class="form-footer">
                         <span>Don't have an account? <a href="#" id="goToRegister">Create Account</a></span>
@@ -114,19 +202,15 @@
                 </div>
             </div>
 
-            <!-- ROLE SELECTION -->
+            <!-- ROLE SELECT -->
             <div class="role-select-container" id="role-select">
                 <div class="form-header">
                     <h2>Join LawLoom</h2>
                     <p>Select your account type to continue</p>
                 </div>
                 <div class="role-cards">
-
-                    <!-- Lawyer Card -->
                     <div class="role-card" onclick="selectRole('lawyer')">
-                        <div class="role-card-icon lawyer-icon">
-                            <i class='bx bxs-briefcase'></i>
-                        </div>
+                        <div class="role-card-icon lawyer-icon"><i class='bx bxs-briefcase'></i></div>
                         <div class="role-card-info">
                             <h3>Lawyer</h3>
                             <p>Licensed legal professional</p>
@@ -134,12 +218,8 @@
                         </div>
                         <i class='bx bx-chevron-right role-arrow'></i>
                     </div>
-
-                    <!-- Regular User Card -->
                     <div class="role-card user-card" onclick="selectRole('user')">
-                        <div class="role-card-icon user-icon">
-                            <i class='bx bxs-user'></i>
-                        </div>
+                        <div class="role-card-icon user-icon"><i class='bx bxs-user'></i></div>
                         <div class="role-card-info">
                             <h3>Regular User</h3>
                             <p>Browse legal cases and resources</p>
@@ -147,20 +227,17 @@
                         </div>
                         <i class='bx bx-chevron-right role-arrow'></i>
                     </div>
-
                 </div>
-                <div class="form-footer" style="margin-top: 10px;">
+                <div class="form-footer" style="margin-top:10px;">
                     <span>Already have an account? <a href="#" id="goToLoginFromRole">Sign In</a></span>
                 </div>
             </div>
 
-            <!-- REGISTER FORM -->
+            <!-- REGISTER -->
             <div class="register-container" id="register">
                 <div class="form-header">
                     <div class="form-header-top">
-                        <button class="back-btn" id="backToRoleSelect">
-                            <i class='bx bx-arrow-back'></i> Back
-                        </button>
+                        <button class="back-btn" id="backToRoleSelect"><i class='bx bx-arrow-back'></i> Back</button>
                         <div id="selectedRoleBadge" class="selected-role-badge"></div>
                     </div>
                     <h2>Create Account</h2>
@@ -175,16 +252,12 @@
                         <label for="register-email">Email Address</label>
                         <input type="text" id="register-email" class="input-field" placeholder="you@example.com">
                     </div>
-
-                    <!-- Bar Council field — only shown for lawyers -->
                     <div class="input-group bar-council-group" id="barCouncilGroup">
                         <label for="bar-council-number">
-                            <i class='bx bxs-id-card'></i>
-                            Bar Council Enrollment Number
+                            <i class='bx bxs-id-card'></i> Bar Council Enrollment Number
                         </label>
                         <input type="text" id="bar-council-number" class="input-field bar-council-input" placeholder="e.g. STATE/1234/2025">
                     </div>
-
                     <div class="input-group">
                         <label for="register-password">Password</label>
                         <div class="password-wrapper">
@@ -199,8 +272,7 @@
                             <i class='bx bx-show password-toggle'></i>
                         </div>
                     </div>
-
-                    <button class="submit-btn">
+                    <button class="submit-btn" id="registerSubmitBtn">
                         <i class='bx bx-user-plus'></i> Create Account
                     </button>
                     <div class="form-footer">
@@ -209,8 +281,8 @@
                 </div>
             </div>
 
-        </div>
-    </div>
+        </div><!-- end auth-right-panel -->
+    </div><!-- end auth-container -->
 
     <script src="main.js"></script>
 </body>

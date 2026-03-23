@@ -14,7 +14,6 @@ html {
 body {
     position: relative;
     color: #eaeaea;
-    font-family: 'Poppins', sans-serif;
 }
 body::before {
     content: "";
@@ -40,7 +39,7 @@ body::after {
     width: 100%;
 }
 
-/*------------------------- NAVIGATION ---------------------------*/
+/* ─── NAVIGATION ─── */
 .nav {
     position: fixed;
     top: 0; left: 0;
@@ -96,23 +95,26 @@ nav ul li a:hover::after { width: 100%; }
 .btn:hover { background: #ffffff; }
 #registerBtn { margin-left: 15px; }
 .btn.white-btn { background: rgb(239,136,0); }
-.btn.btn.white-btn:hover { background: rgb(255,255,255); }
+.btn.white-btn:hover { background: rgb(255,255,255); }
 
-/*--------------------------- LOGO --------------------*/
+/* ─── LOGO ─── */
 .logo { display: flex; align-items: center; }
 .logo-circle {
     width: 45px; height: 45px;
     background-color: rgba(212,175,55,0.08);
-    border: 1px solid #D4AF37;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: #D4AF37; font-size: 20px;
     box-shadow: 0 0 20px rgba(212,175,55,0.25);
     margin-right: 12px;
 }
+.logo-circle img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 50%; display: block;
+}
 .logo h1 { color: #D4AF37; font-size: 24px; margin: 0; }
 
-/*------------------------------------ HERO SECTION ----------------------------*/
+/* ─── HERO SECTION ─── */
 .hero-section {
     min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
@@ -126,7 +128,7 @@ nav ul li a:hover::after { width: 100%; }
 }
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -157,7 +159,7 @@ nav ul li a:hover::after { width: 100%; }
 }
 .cta-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
 
-/*--------------------------- Auth Modal - Split Screen ---------------------------*/
+/* ─── AUTH MODAL ─── */
 .form-shadow {
     position: fixed; inset: 0;
     background: rgba(5,10,25,0.92);
@@ -169,14 +171,13 @@ nav ul li a:hover::after { width: 100%; }
 }
 .form-shadow.active { opacity: 1; visibility: visible; }
 
-/*------------------------- Main Auth Container -------------------------------------------------------*/
 .auth-container {
     position: fixed;
-    top: 50%; left: 50%;
+    top: 54%; left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0; visibility: hidden;
     width: 90%; max-width: 1100px;
-    height: 650px;
+    height: auto; max-height: 88vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: transparent;
@@ -191,7 +192,6 @@ nav ul li a:hover::after { width: 100%; }
     opacity: 1; visibility: visible;
 }
 
-/* Close Button */
 .close-btn {
     position: absolute; top: 20px; right: 20px;
     width: 40px; height: 40px;
@@ -203,10 +203,10 @@ nav ul li a:hover::after { width: 100%; }
 }
 .close-btn:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
 
-/*-------------------------- LEFT PANEL --------------------------------------------------------*/
+/* ─── LEFT PANEL ─── */
 .auth-left-panel {
     background: linear-gradient(135deg, #0a1628 0%, #162540 100%);
-    padding: 60px 50px;
+    padding: 50px;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
 }
@@ -219,7 +219,7 @@ nav ul li a:hover::after { width: 100%; }
 }
 @keyframes rotate {
     from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    to   { transform: rotate(360deg); }
 }
 .welcome-content { position: relative; z-index: 1; text-align: center; }
 .welcome-icon {
@@ -232,44 +232,42 @@ nav ul li a:hover::after { width: 100%; }
     box-shadow: 0 0 40px rgba(212,175,55,0.3);
     overflow: hidden;
 }
-.welcome-icon img {
-    width: 100%; height: 100%;
-    object-fit: cover; border-radius: 50%; display: block;
-}
-.welcome-icon i { font-size: 60px; color: #D4AF37; }
+.welcome-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
 .welcome-title { font-size: 36px; font-weight: 600; color: white; margin-bottom: 20px; line-height: 1.3; }
 .welcome-title .counsellor { color: #D4AF37; display: block; font-weight: 700; }
 .welcome-text { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.6; }
 
-/*-------------------------  RIGHT PANEL --------------------------------------*/
+/* ─── RIGHT PANEL ─── */
+/* FIX: Added position:relative and min-height so absolute-positioned
+        form containers have a proper containing block and don't clip */
 .auth-right-panel {
     background: #1a1f35;
-    padding: 40px 55px;
-    position: relative;
+    padding: 50px 55px 40px;
+    position: relative;        /* FIX: was missing — children are position:absolute */
+    min-height: 520px;         /* FIX: ensures panel is tall enough to contain forms */
     overflow-y: auto;
 }
 .brand-header {
     display: flex; align-items: center; gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
     color: #D4AF37; font-size: 20px; font-weight: 600;
+    position: relative; z-index: 1;
 }
 .brand-header i { font-size: 26px; }
 
-/*---------------------- Form Containers (shared transitions) ----------------------*/
+/* ─── Form Containers ─── */
 .login-container,
 .role-select-container,
 .register-container {
     position: absolute;
-    width: calc(100% - 110px);
+    top: 90px;                           /* sit below the brand header */
+    left: 55px; right: 55px;
     transition: all 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
-/* DEFAULT STATES */
 .login-container       { transform: translateX(0);    opacity: 1; pointer-events: auto; }
-.role-select-container { transform: translateX(100%); opacity: 0; pointer-events: none; }
-.register-container    { transform: translateX(100%); opacity: 0; pointer-events: none; }
+.role-select-container { transform: translateX(110%); opacity: 0; pointer-events: none; }
+.register-container    { transform: translateX(110%); opacity: 0; pointer-events: none; }
 
-/* ACTIVE */
 .login-container.active,
 .role-select-container.active,
 .register-container.active {
@@ -277,26 +275,20 @@ nav ul li a:hover::after { width: 100%; }
     opacity: 1;
     pointer-events: auto;
 }
-
-/* HIDE (slide left) */
 .login-container.hide,
 .role-select-container.hide,
 .register-container.hide {
-    transform: translateX(-100%);
+    transform: translateX(-110%);
     opacity: 0;
     pointer-events: none;
 }
 
-/*---------------------- Form Header ----------------------*/
+/* ─── Form Header ─── */
 .form-header { margin-bottom: 25px; }
 .form-header h2 { font-size: 28px; font-weight: 600; color: white; margin-bottom: 6px; }
-.form-header p { font-size: 14px; color: rgba(255,255,255,0.6); }
-
-/* Back button row */
+.form-header p  { font-size: 14px; color: rgba(255,255,255,0.6); }
 .form-header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 12px;
 }
 .back-btn {
@@ -310,21 +302,16 @@ nav ul li a:hover::after { width: 100%; }
 }
 .back-btn:hover { background: rgba(255,255,255,0.15); color: white; }
 .back-btn i { font-size: 16px; }
-
-/* Selected role badge in register header */
 .selected-role-badge {
-    padding: 5px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
 }
 .selected-role-badge.lawyer { background: rgba(212,175,55,0.15); color: #D4AF37; border: 1px solid rgba(212,175,55,0.4); }
 .selected-role-badge.user   { background: rgba(99,179,237,0.15); color: #63b3ed; border: 1px solid rgba(99,179,237,0.4); }
 
-/*---------------------- Form Content ----------------------*/
-.form-content { display: flex; flex-direction: column; gap: 18px; }
+/* ─── Form Content ─── */
+.form-content { display: flex; flex-direction: column; gap: 15px; }
 .input-group { display: flex; flex-direction: column; gap: 7px; }
-.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .input-group label {
     font-size: 13px; font-weight: 500;
     color: rgba(255,255,255,0.9);
@@ -332,12 +319,10 @@ nav ul li a:hover::after { width: 100%; }
 }
 .input-group label i { font-size: 16px; color: #D4AF37; }
 .input-field {
-    width: 100%;
-    padding: 13px 18px;
+    width: 100%; padding: 13px 18px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
-    color: white; font-size: 14px;
+    border-radius: 8px; color: white; font-size: 14px;
     transition: all 0.3s ease; outline: none;
 }
 .input-field:focus {
@@ -346,6 +331,7 @@ nav ul li a:hover::after { width: 100%; }
     box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
 }
 .input-field::placeholder { color: rgba(255,255,255,0.4); }
+.input-field.input-error  { border-color: #e53e3e !important; box-shadow: 0 0 0 3px rgba(229,62,62,0.15) !important; }
 
 /* Password */
 .password-wrapper { position: relative; }
@@ -357,16 +343,10 @@ nav ul li a:hover::after { width: 100%; }
 }
 .password-toggle:hover { color: #D4AF37; }
 
-/* Bar Council special field */
-.bar-council-group { display: none; } /* hidden by default, shown by JS for lawyers */
-.bar-council-input {
-    border-color: rgba(212,175,55,0.35) !important;
-    background: rgba(212,175,55,0.05) !important;
-}
-.bar-council-input:focus {
-    border-color: #D4AF37 !important;
-    box-shadow: 0 0 0 3px rgba(212,175,55,0.15) !important;
-}
+/* Bar Council */
+.bar-council-group { display: none; }
+.bar-council-input { border-color: rgba(212,175,55,0.35) !important; background: rgba(212,175,55,0.05) !important; }
+.bar-council-input:focus { border-color: #D4AF37 !important; box-shadow: 0 0 0 3px rgba(212,175,55,0.15) !important; }
 
 /* Submit Button */
 .submit-btn {
@@ -380,6 +360,7 @@ nav ul li a:hover::after { width: 100%; }
     box-shadow: 0 4px 15px rgba(212,175,55,0.3);
 }
 .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .submit-btn i { font-size: 20px; }
 
 /* Form Footer */
@@ -388,89 +369,187 @@ nav ul li a:hover::after { width: 100%; }
 .form-footer a { color: #D4AF37; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
 .form-footer a:hover { color: #F0C649; text-decoration: underline; }
 
-/*====================== ROLE SELECTION CARDS ======================*/
-.role-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 10px;
-}
+/* ─── ROLE CARDS ─── */
+.role-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 10px; }
 .role-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 20px 22px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    display: flex; align-items: center; gap: 18px; padding: 20px 22px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; cursor: pointer; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
 }
 .role-card::before {
-    content: "";
-    position: absolute; inset: 0;
+    content: ""; position: absolute; inset: 0;
     background: linear-gradient(135deg, rgba(212,175,55,0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 0; transition: opacity 0.3s ease;
 }
-.role-card:hover {
-    border-color: #D4AF37;
-    background: rgba(212,175,55,0.06);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
+.role-card:hover { border-color: #D4AF37; background: rgba(212,175,55,0.06); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 .role-card:hover::before { opacity: 1; }
-
-/* Lawyer card accent */
-.role-card:first-child:hover { border-color: #D4AF37; }
-/* User card accent */
-.role-card:last-child:hover  { border-color: #63b3ed; background: rgba(99,179,237,0.06); }
-.role-card:last-child:hover::before {
-    background: linear-gradient(135deg, rgba(99,179,237,0.05), transparent);
-    opacity: 1;
-}
-
-.role-card-icon {
-    width: 54px; height: 54px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px; flex-shrink: 0;
-}
+.role-card:last-child:hover { border-color: #63b3ed; background: rgba(99,179,237,0.06); }
+.role-card:last-child:hover::before { background: linear-gradient(135deg, rgba(99,179,237,0.05), transparent); opacity: 1; }
+.role-card-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
 .lawyer-icon { background: rgba(212,175,55,0.15); color: #D4AF37; }
 .user-icon   { background: rgba(99,179,237,0.15); color: #63b3ed; }
-
 .role-card-info { flex: 1; }
 .role-card-info h3 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 4px; }
 .role-card-info p  { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
-
-.role-badge {
-    display: inline-block;
-    padding: 3px 10px; border-radius: 20px;
-    font-size: 11px; font-weight: 600;
-}
+.role-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
 .lawyer-badge { background: rgba(212,175,55,0.15); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
 .user-badge   { background: rgba(99,179,237,0.15); color: #63b3ed; border: 1px solid rgba(99,179,237,0.3); }
-
 .role-arrow { font-size: 24px; color: rgba(255,255,255,0.3); transition: all 0.3s ease; flex-shrink: 0; }
 .role-card:hover .role-arrow { color: #D4AF37; transform: translateX(4px); }
 .role-card:last-child:hover .role-arrow { color: #63b3ed; }
 
-/*===================== RESPONSIVE =====================*/
+/* ─── VALIDATION ─── */
+.error-msg {
+    color: #fc8181; font-size: 12px; margin-top: 4px;
+    display: flex; align-items: center; gap: 4px;
+}
+.error-msg::before { content: "⚠"; font-size: 11px; }
+
+/* ─── TOAST ─── */
+.toast {
+    position: fixed; bottom: 30px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1e2540; border: 1px solid rgba(255,255,255,0.1);
+    color: white; padding: 14px 24px; border-radius: 12px;
+    font-size: 14px; font-weight: 500;
+    display: flex; align-items: center; gap: 10px;
+    opacity: 0; transition: all 0.4s ease; z-index: 9999;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5); white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast-error   { border-left: 4px solid #e53e3e; }
+.toast-error i { color: #fc8181; font-size: 20px; }
+.toast-success { border-left: 4px solid #48bb78; }
+.toast-success i { color: #68d391; font-size: 20px; }
+
+/* ─── ABOUT SECTION ─── */
+.about-section {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 110px 40px 80px; text-align: center; position: relative; z-index: 0;
+}
+.about-heading { font-size: 2.8rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
+.about-heading span { color: #FDB913; }
+.about-subtitle { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 60px; }
+.cards-wrapper { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+.about-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 44px 32px 40px; width: 300px; text-align: center;
+    cursor: default; transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    position: relative; overflow: hidden;
+}
+.about-card::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(212,175,55,0.06), transparent);
+    opacity: 0; transition: opacity 0.35s ease;
+}
+.about-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-color: #D4AF37; background: rgba(212,175,55,0.06); }
+.about-card:hover::before { opacity: 1; }
+.card-icon-wrap {
+    width: 70px; height: 70px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px; transition: background 0.35s ease, box-shadow 0.35s ease; position: relative; z-index: 1;
+}
+.about-card:hover .card-icon-wrap { background: #D4AF37; box-shadow: 0 0 24px rgba(212,175,55,0.45); }
+.card-icon-wrap svg { width: 32px; height: 32px; fill: #D4AF37; transition: fill 0.35s ease; }
+.about-card:hover .card-icon-wrap svg { fill: #0a1628; }
+.about-card h3 { font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; position: relative; z-index: 1; }
+.about-card p  { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; position: relative; z-index: 1; }
+
+/* ─── CONTACT SECTION ─── */
+.contact-section {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 110px 40px 80px; text-align: center; position: relative; z-index: 0;
+}
+.contact-heading { font-size: 2.8rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
+.contact-heading span { color: #FDB913; }
+.contact-subtitle { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 50px; }
+.contact-wrapper { display: flex; gap: 28px; justify-content: center; align-items: stretch; flex-wrap: wrap; width: 100%; max-width: 980px; }
+.contact-info-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 40px 36px; flex: 1; min-width: 280px; max-width: 420px;
+    text-align: left; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-info-card:hover { border-color: #D4AF37; box-shadow: 0 12px 35px rgba(0,0,0,0.4); }
+.info-title, .form-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 32px; }
+.info-item { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 28px; }
+.info-item:last-child { margin-bottom: 0; }
+.info-icon {
+    width: 46px; height: 46px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.info-icon svg { width: 22px; height: 22px; fill: #D4AF37; }
+.info-text { display: flex; flex-direction: column; gap: 4px; padding-top: 2px; }
+.info-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.05em; }
+.info-value { font-size: 0.95rem; font-weight: 500; color: #ffffff; }
+.contact-form-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 40px 36px; flex: 1.4; min-width: 300px; max-width: 560px;
+    text-align: left; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form-card:hover { border-color: #D4AF37; box-shadow: 0 12px 35px rgba(0,0,0,0.4); }
+.form-title { margin-bottom: 28px; }
+.form-group { margin-bottom: 18px; }
+.contact-input {
+    width: 100%; padding: 14px 18px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; color: #ffffff; font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem; outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-sizing: border-box;
+}
+.contact-input::placeholder { color: rgba(255,255,255,0.35); }
+.contact-input:focus { border-color: #D4AF37; background: rgba(212,175,55,0.04); box-shadow: 0 0 0 3px rgba(212,175,55,0.1); }
+.contact-textarea { resize: vertical; min-height: 140px; max-height: 300px; }
+.send-btn {
+    width: 100%; padding: 15px;
+    background: #FDB913; color: #0a1628;
+    border: none; border-radius: 8px;
+    font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700;
+    cursor: pointer; transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; margin-top: 6px;
+}
+.send-btn:hover { background: #e5a711; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(253,185,19,0.35); }
+
+/* ─── FOOTER ─── */
+.site-footer {
+    background: rgba(5,10,25,0.8); border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 48px; display: flex; flex-direction: column;
+    align-items: center; gap: 14px; text-align: center; position: relative; z-index: 0;
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo-circle {
+    width: 38px; height: 38px; background-color: rgba(212,175,55,0.08);
+    border: 1px solid #D4AF37; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #D4AF37; font-size: 17px; box-shadow: 0 0 14px rgba(212,175,55,0.2);
+}
+.footer-logo-text { font-size: 1.2rem; font-weight: 700; color: #ffffff; }
+.footer-logo-gold { color: #D4AF37; }
+.footer-copy { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin: 0; }
+
+/* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
-    .auth-container { width: 95%; height: auto; max-height: 90vh; }
-    .auth-left-panel, .auth-right-panel { padding: 40px 30px; }
+    .auth-container { width: 95%; }
+    .auth-left-panel { padding: 40px 30px; }
+    .auth-right-panel { padding: 40px 30px; }
+    .login-container, .role-select-container, .register-container { left: 30px; right: 30px; }
 }
 @media (max-width: 768px) {
     .hero-title { font-size: 42px; }
     .hero-subtitle { font-size: 16px; }
     .hero-buttons { flex-direction: column; align-items: center; }
     .cta-primary, .cta-secondary { width: 100%; max-width: 300px; }
-    .auth-container { grid-template-columns: 1fr; width: 95%; max-width: 500px; height: auto; max-height: 90vh; }
+    .auth-container { grid-template-columns: 1fr; width: 95%; max-width: 500px; }
     .auth-left-panel { display: none; }
-    .auth-right-panel { padding: 40px 30px; }
-    .login-container, .role-select-container, .register-container { width: calc(100% - 60px); }
-    .input-row { grid-template-columns: 1fr; gap: 18px; }
+    .auth-right-panel { padding: 40px 30px; min-height: 480px; }
+    .login-container, .role-select-container, .register-container { left: 30px; right: 30px; }
+    .cards-wrapper { flex-direction: column; align-items: center; }
+    .about-card { width: 90%; max-width: 340px; }
+    .contact-wrapper { flex-direction: column; align-items: center; }
+    .contact-info-card, .contact-form-card { width: 100%; max-width: 100%; }
+    .about-heading, .contact-heading { font-size: 2rem; }
 }
 @media (max-width: 480px) {
     .nav { height: 70px; padding: 0 20px; }
@@ -480,97 +559,8 @@ nav ul li a:hover::after { width: 100%; }
     .nav-button .btn { width: 100px; height: 35px; font-size: 14px; }
     .hero-title { font-size: 32px; }
     .auth-right-panel { padding: 30px 20px; }
+    .login-container, .role-select-container, .register-container { left: 20px; right: 20px; }
     .form-header h2 { font-size: 24px; }
-}
-/* ─── ADD THESE TO THE BOTTOM OF YOUR style.css ─── */
-
-/* Input error state */
-.input-field.input-error {
-    border-color: #e53e3e !important;
-    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15) !important;
-}
-
-/* Error message text */
-.error-msg {
-    color: #fc8181;
-    font-size: 12px;
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-.error-msg::before {
-    content: "⚠";
-    font-size: 11px;
-}
-
-/* Toast notification */
-.toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: #1e2540;
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    opacity: 0;
-    transition: all 0.4s ease;
-    z-index: 9999;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    white-space: nowrap;
-}
-.toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-.toast-error {
-    border-left: 4px solid #e53e3e;
-}
-.toast-error i {
-    color: #fc8181;
-    font-size: 20px;
-}
-.toast-success {
-    border-left: 4px solid #48bb78;
-}
-.toast-success i {
-    color: #68d391;
-    font-size: 20px;
-}
-/* ─── PASTE THESE AT THE BOTTOM OF YOUR style.css ─── */
-
-/* Pull modal down so it sits more centrally in the visible viewport */
-.auth-container {
-    top: 54%;                          /* was 50% — shifts it down slightly */
-    height: auto;                      /* let content define height, not fixed 650px */
-    min-height: 560px;
-    max-height: 88vh;                  /* never taller than 88% of screen */
-}
-
-/* Give the right panel more vertical breathing room */
-.auth-right-panel {
-    padding: 50px 55px 40px;          /* extra top padding so content isn't jammed up */
-    overflow-y: auto;
-}
-
-/* Give the left panel more vertical breathing room */
-.auth-left-panel {
-    padding: 50px 50px;
-}
-
-/* Slightly reduce form gap so tall forms (register) don't overflow */
-.form-content {
-    gap: 15px;
-}
-
-/* Brand header less bottom margin on cramped screens */
-.brand-header {
-    margin-bottom: 22px;
+    .about-heading, .contact-heading { font-size: 1.6rem; }
+    .about-section, .contact-section { padding: 100px 20px 60px; }
 }
