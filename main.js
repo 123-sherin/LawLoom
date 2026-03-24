@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.innerHTML = `<i class='bx bx-loader-alt bx-spin'></i> Signing in...`;
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/login", {
+            const res = await fetch("https://lawloom-backend.onrender.com/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (pdfFile) formData.append("barCouncilPDF", pdfFile);
             }
 
-            const res = await fetch("http://localhost:5000/api/auth/register", {
+            const res = await fetch("https://lawloom-backend.onrender.com/api/auth/register", {
                 method: "POST",
                 // ⚠️ Do NOT set Content-Type — browser sets it with boundary automatically
                 body: formData
