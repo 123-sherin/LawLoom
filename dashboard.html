@@ -17,6 +17,8 @@
         }
         html { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); }
         body { display:flex; min-height:100vh; overflow-x:hidden; }
+
+        /* ── SIDEBAR ── */
         .sidebar { position:fixed; left:0; top:0; bottom:0; width:var(--sidebar-w); background:var(--bg2); border-right:1px solid var(--border); display:flex; flex-direction:column; z-index:100; transition:transform .3s ease; }
         .sidebar-brand { display:flex; align-items:center; gap:12px; padding:28px 24px 24px; border-bottom:1px solid var(--border); }
         .brand-icon { width:50px; height:50px; border-radius:10px; background:var(--gold-dim); border:1px solid rgba(212,175,55,0.35); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:22px; overflow:hidden; flex-shrink:0; }
@@ -29,18 +31,24 @@
         .nav-item.active { background:var(--gold-dim); color:var(--gold); border-color:rgba(212,175,55,0.2); }
         .nav-item.active::before { content:''; position:absolute; left:0; top:20%; bottom:20%; width:3px; border-radius:2px; background:var(--gold); }
         .sidebar-user { padding:16px 20px; border-top:1px solid var(--border); display:flex; align-items:center; gap:12px; }
-        .user-avatar { width:38px; height:38px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:18px; flex-shrink:0; }
+        .user-avatar { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-light)); display:flex; align-items:center; justify-content:center; color:#0a1628; font-size:15px; font-weight:700; flex-shrink:0; }
         .user-info { flex:1; min-width:0; }
         .user-name { font-size:14px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
         .user-role { font-size:11px; color:var(--muted); }
         .signout-btn { display:flex; align-items:center; gap:8px; background:none; border:none; color:var(--muted); font-size:13px; font-family:'Poppins',sans-serif; cursor:pointer; padding:6px 10px; border-radius:8px; width:100%; margin-top:10px; transition:all .2s ease; }
         .signout-btn:hover { color:#fc8181; background:rgba(252,129,129,0.08); }
         .signout-btn i { font-size:16px; }
+
+        /* ── MAIN ── */
         .main { margin-left:var(--sidebar-w); flex:1; min-height:100vh; background:var(--bg); position:relative; }
         .main::before { content:""; position:fixed; inset:0; left:var(--sidebar-w); background-image:linear-gradient(rgba(212,175,55,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.03) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; z-index:0; }
+
+        /* ── VIEWS ── */
         .view { display:none; padding:60px 60px 80px; position:relative; z-index:1; animation:fadeIn .4s ease; }
         .view.active { display:block; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ── HOME ── */
         .home-hero { text-align:center; padding:40px 0 60px; }
         .home-hero h1 { font-family:'Playfair Display',serif; font-size:58px; font-weight:700; color:var(--gold); line-height:1.1; margin-bottom:16px; }
         .home-hero p { font-size:17px; color:var(--muted); max-width:560px; margin:0 auto 40px; line-height:1.7; }
@@ -53,6 +61,8 @@
         .search-suggestions.show { display:block; }
         .suggestion-item { display:flex; align-items:center; gap:12px; padding:13px 20px; cursor:pointer; transition:background .2s ease; color:var(--text); font-size:14px; }
         .suggestion-item:hover { background:var(--gold-dim); color:var(--gold); }
+
+        /* ── SECTIONS ── */
         .section-title { display:flex; align-items:center; gap:10px; font-size:20px; font-weight:600; color:var(--text); margin-bottom:18px; }
         .section-title i { color:var(--gold); font-size:22px; }
         .trending-section { margin-bottom:50px; }
@@ -71,18 +81,26 @@
         .cat-desc { font-size:13px; color:var(--muted); line-height:1.5; margin-bottom:16px; }
         .cat-tags { display:flex; flex-wrap:wrap; gap:7px; }
         .tag { padding:4px 10px; border-radius:20px; background:rgba(255,255,255,0.06); border:1px solid var(--border); font-size:11px; color:var(--muted); font-weight:500; }
+
+        /* ── CRIME DETAIL ── */
         .back-btn-row { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
         .back-btn { display:flex; align-items:center; gap:8px; background:var(--bg2); border:1px solid var(--border); color:var(--muted); padding:8px 16px; border-radius:20px; cursor:pointer; font-size:13px; font-family:'Poppins',sans-serif; transition:all .2s ease; }
         .back-btn:hover { color:var(--gold); border-color:rgba(212,175,55,0.4); }
         .back-btn i { font-size:16px; }
         .crime-detail-title { font-family:'Playfair Display',serif; font-size:42px; color:var(--gold); margin-bottom:6px; word-break:break-word; }
-        .crime-detail-meta { color:var(--muted); font-size:14px; margin-bottom:40px; }
-        .sections-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:50px; }
-        .section-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px 22px; transition:all .25s ease; }
-        .section-card:hover { border-color:rgba(212,175,55,0.3); background:var(--bg3); }
-        .section-badge { display:inline-block; padding:4px 12px; border-radius:20px; background:var(--gold-dim); border:1px solid rgba(212,175,55,0.3); color:var(--gold); font-size:12px; font-weight:600; margin-bottom:10px; }
-        .section-card h3 { font-size:15px; font-weight:600; color:var(--text); margin-bottom:6px; }
-        .section-card p { font-size:13px; color:var(--muted); line-height:1.5; }
+        .crime-detail-meta { color:var(--muted); font-size:14px; margin-bottom:32px; }
+
+        /* ── LEGAL SECTIONS (same as lawyer) ── */
+        .legal-sections-section { margin-bottom:40px; }
+        .legal-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .legal-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px 22px; transition:all .25s ease; }
+        .legal-card:hover { border-color:rgba(212,175,55,0.35); background:var(--bg3); }
+        .legal-badge { display:inline-block; padding:4px 12px; border-radius:20px; background:var(--gold-dim); border:1px solid rgba(212,175,55,0.3); color:var(--gold); font-size:12px; font-weight:700; margin-bottom:10px; }
+        .legal-card h4 { font-size:15px; font-weight:600; color:var(--text); margin-bottom:6px; }
+        .legal-card p { font-size:13px; color:var(--muted); line-height:1.55; }
+        .legal-punishment { margin-top:8px; color:var(--gold); font-size:12px; font-weight:600; }
+
+        /* ── CASES ── */
         .cases-filter { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
         .year-select { background:var(--bg2); border:1px solid var(--border); color:var(--text); padding:8px 14px; border-radius:8px; font-family:'Poppins',sans-serif; font-size:13px; outline:none; cursor:pointer; }
         .case-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:14px; cursor:pointer; transition:all .3s ease; display:flex; align-items:center; justify-content:space-between; }
@@ -93,6 +111,8 @@
         .case-sections { display:flex; flex-wrap:wrap; gap:6px; }
         .case-section-tag { padding:3px 10px; border-radius:14px; background:var(--gold-dim); border:1px solid rgba(212,175,55,0.25); color:var(--gold); font-size:11px; font-weight:600; }
         .case-card-right { color:var(--muted); font-size:22px; flex-shrink:0; }
+
+        /* ── CASE DETAIL ── */
         .case-detail-header { margin-bottom:30px; }
         .case-detail-header h1 { font-family:'Playfair Display',serif; font-size:32px; color:var(--text); margin-bottom:10px; line-height:1.3; word-break:break-word; }
         .case-detail-badges { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
@@ -101,7 +121,8 @@
         .case-info-row span { display:flex; align-items:center; gap:6px; }
         .case-info-row i { color:var(--gold); }
         .judgment-box { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:30px; margin-bottom:30px; max-height:500px; overflow-y:auto; }
-        .judgment-box h3 { font-size:16px; font-weight:600; color:var(--text); margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:12px; }
+        .judgment-box h3 { font-size:16px; font-weight:600; color:var(--text); margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:12px; display:flex; align-items:center; gap:8px; }
+        .judgment-box h3 i { color:var(--gold); }
         .judgment-text { font-size:14px; color:var(--muted); line-height:1.9; white-space:pre-wrap; }
         .action-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:30px; }
         .btn-primary { display:flex; align-items:center; gap:10px; padding:14px 28px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border:none; border-radius:10px; color:#0a1628; font-size:15px; font-weight:600; cursor:pointer; font-family:'Poppins',sans-serif; transition:all .3s ease; box-shadow:0 4px 15px rgba(212,175,55,0.3); }
@@ -116,6 +137,8 @@
         .summary-header h3 { font-size:16px; font-weight:600; color:var(--gold); display:flex; align-items:center; gap:8px; }
         .cached-badge { padding:4px 12px; border-radius:20px; background:rgba(72,187,120,0.15); border:1px solid rgba(72,187,120,0.3); color:#68d391; font-size:11px; font-weight:600; }
         .summary-text { font-size:14px; color:var(--muted); line-height:1.9; white-space:pre-wrap; }
+
+        /* ── ANALYTICS ── */
         .analytics-header { margin-bottom:40px; }
         .analytics-header h1 { font-family:'Playfair Display',serif; font-size:38px; color:var(--text); margin-bottom:6px; }
         .analytics-header p { color:var(--muted); font-size:15px; }
@@ -133,6 +156,8 @@
         .rank-count i { font-size:15px; color:var(--gold); }
         .rank-bar-bg { height:7px; border-radius:4px; background:rgba(255,255,255,0.06); overflow:hidden; }
         .rank-bar { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--gold),var(--gold-light)); width:0; transition:width 1.2s cubic-bezier(.16,.84,.44,1); }
+
+        /* ── UTILS ── */
         .loading-state { text-align:center; padding:40px; color:var(--muted); grid-column:1/-1; }
         .spinner { display:inline-block; width:24px; height:24px; border:2px solid rgba(212,175,55,0.3); border-top-color:var(--gold); border-radius:50%; animation:spin .7s linear infinite; }
         @keyframes spin { to{transform:rotate(360deg)} }
@@ -144,10 +169,12 @@
         .toast-error   { border-left:4px solid #e53e3e; }
         .toast-success i { color:#68d391; font-size:20px; }
         .toast-error   i { color:#fc8181; font-size:20px; }
+
+        /* ── MOBILE ── */
         .menu-toggle { display:none; position:fixed; top:20px; left:20px; z-index:200; width:42px; height:42px; border-radius:10px; background:var(--bg2); border:1px solid var(--border); color:var(--text); font-size:22px; align-items:center; justify-content:center; cursor:pointer; }
         .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:99; }
         .sidebar-overlay.show { display:block; }
-        @media(max-width:900px) { .view{padding:40px 24px 60px;} .sections-grid{grid-template-columns:1fr;} }
+        @media(max-width:900px) { .view{padding:40px 24px 60px;} .legal-grid{grid-template-columns:1fr;} }
         @media(max-width:700px) { .sidebar{transform:translateX(-100%);} .sidebar.open{transform:translateX(0);} .main{margin-left:0;} .main::before{left:0;} .menu-toggle{display:flex;} .view{padding:70px 20px 60px;} .home-hero h1{font-size:32px;} .categories-grid{grid-template-columns:1fr;} }
     </style>
 </head>
@@ -168,7 +195,7 @@
 
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-        <div class="brand-icon"><img src="img/logo.jpg" alt="LawLoom"></div>
+        <div class="brand-icon"><img src="img/logo.jpg" alt="LawLoom" onerror="this.style.display='none';this.parentElement.innerHTML='⚖';"></div>
         <div><div class="brand-name">LawLoom</div></div>
     </div>
     <nav class="sidebar-nav">
@@ -176,7 +203,7 @@
         <button class="nav-item" data-view="analytics"><i class='bx bx-bar-chart-alt-2'></i> Analytics</button>
     </nav>
     <div class="sidebar-user">
-        <div class="user-avatar"><i class='bx bx-user'></i></div>
+        <div class="user-avatar" id="userAvatarInitial">U</div>
         <div class="user-info">
             <div class="user-name" id="sidebarUserName">User</div>
             <div class="user-role">Standard User</div>
@@ -217,6 +244,16 @@
         </div>
         <div class="crime-detail-title" id="crimeTitle">Loading...</div>
         <div class="crime-detail-meta" id="crimeMeta">Loading...</div>
+
+        <!-- Legal Sections -->
+        <div class="legal-sections-section">
+            <div class="section-title"><i class='bx bx-law'></i> Applicable Legal Sections</div>
+            <div class="legal-grid" id="legalSectionsGrid">
+                <div class="loading-state"><div class="spinner"></div></div>
+            </div>
+        </div>
+
+        <!-- Cases -->
         <div class="cases-filter">
             <div class="section-title" style="margin-bottom:0"><i class='bx bx-file'></i> Cases</div>
             <div style="display:flex;align-items:center;gap:10px;">
@@ -259,20 +296,18 @@
             </button>
         </div>
         <div class="summary-box" id="summaryBox">
-    <div class="summary-header">
-        <h3><i class='bx bx-stars'></i> AI-Generated Summary</h3>
-        <span class="cached-badge" id="cachedBadge" style="display:none">⚡ Cached</span>
+            <div class="summary-header">
+                <h3><i class='bx bx-stars'></i> AI-Generated Summary</h3>
+                <span class="cached-badge" id="cachedBadge" style="display:none">⚡ Cached</span>
+            </div>
+            <div class="summary-text" id="summaryText"></div>
+            <div style="margin-top:20px;">
+                <button class="btn-secondary" onclick="downloadSummaryPDF()">
+                    <i class='bx bx-download'></i> Download as PDF
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="summary-text" id="summaryText"></div>
-
-    <!-- ADD THIS BUTTON -->
-    <div style="margin-top:20px;">
-        <button class="btn-secondary" onclick="downloadSummaryPDF()">
-            <i class='bx bx-download'></i> Download as PDF
-        </button>
-    </div>
-</div>
-</div>
 
     <!-- ANALYTICS VIEW -->
     <div class="view" id="view-analytics">
@@ -289,32 +324,31 @@
 </main>
 
 <script>
-// ── CONFIG ────────────────────────────────────────────
-const API = "https://lawloom-backend.onrender.com/api";
+// ── CONFIG ─────────────────────────────────────────────
+const API   = "http://localhost:5000/api";
 const TOKEN = sessionStorage.getItem("lawloom_token") || "";
 
 let currentCrime  = null;
 let currentCaseId = null;
 let allCases      = [];
 
-// ── These match EXACTLY what's stored in MongoDB ─────
 const TRENDING = [
-    { name:"Cyber Crime",   count:50 },
-    { name:"Murder",        count:38 },
-    { name:"Fraud",         count:32 },
-    { name:"Theft",         count:28 },
-    { name:"Drug Offense",  count:21 }
+    { name:"Cyber Crime", count:50 },
+    { name:"Murder",      count:38 },
+    { name:"Fraud",       count:32 },
+    { name:"Theft",       count:28 },
+    { name:"Drug Offense",count:21 }
 ];
 
 const CATEGORIES = [
-    { icon:"bx-desktop",       name:"Cyber Crime",           desc:"Digital offenses including hacking, phishing, and IT Act violations",      tags:["IT Act","Hacking","Phishing"],   crime:"Cyber Crime" },
-    { icon:"bxs-home",         name:"Theft",                 desc:"Offenses against property including theft and dishonest possession",        tags:["379 IPC","411 IPC"],             crime:"Theft" },
-    { icon:"bx-error-alt",     name:"Murder",                desc:"Offenses involving culpable homicide and capital punishment",               tags:["302 IPC","304 IPC"],             crime:"Murder" },
-    { icon:"bx-dollar-circle", name:"Fraud",                 desc:"White-collar offenses including cheating and criminal breach of trust",     tags:["420 IPC","409 IPC"],             crime:"Fraud" },
-    { icon:"bx-shield-x",      name:"Drug Offense",          desc:"Illegal manufacture, distribution and possession of controlled substances", tags:["NDPS Act","21 NDPS"],            crime:"Drug Offense" },
-    { icon:"bxs-user-x",       name:"Kidnapping",            desc:"Offenses of abduction and kidnapping for ransom",                          tags:["364A IPC","363 IPC"],            crime:"Kidnapping" },
-    { icon:"bx-law",           name:"Bail Case",             desc:"Bail applications and personal liberty cases under CrPC",                  tags:["439 CrPC","437 CrPC"],           crime:"Bail Case" },
-    { icon:"bx-fist",          name:"Assault",               desc:"Offenses of voluntarily causing hurt by dangerous weapons",                tags:["323 IPC","324 IPC"],             crime:"Assault" },
+    { icon:"bx-desktop",       name:"Cyber Crime",  desc:"Digital offenses including hacking, phishing, and IT Act violations",      tags:["IT Act","Hacking","Phishing"],   crime:"Cyber Crime" },
+    { icon:"bxs-home",         name:"Theft",        desc:"Offenses against property including theft and dishonest possession",        tags:["379 IPC","411 IPC"],             crime:"Theft" },
+    { icon:"bx-error-alt",     name:"Murder",       desc:"Offenses involving culpable homicide and capital punishment",               tags:["302 IPC","304 IPC"],             crime:"Murder" },
+    { icon:"bx-dollar-circle", name:"Fraud",        desc:"White-collar offenses including cheating and criminal breach of trust",     tags:["420 IPC","409 IPC"],             crime:"Fraud" },
+    { icon:"bx-shield-x",      name:"Drug Offense", desc:"Illegal manufacture, distribution and possession of controlled substances", tags:["NDPS Act","21 NDPS"],            crime:"Drug Offense" },
+    { icon:"bxs-user-x",       name:"Kidnapping",   desc:"Offenses of abduction and kidnapping for ransom",                          tags:["364A IPC","363 IPC"],            crime:"Kidnapping" },
+    { icon:"bx-law",           name:"Bail Case",    desc:"Bail applications and personal liberty cases under CrPC",                  tags:["439 CrPC","437 CrPC"],           crime:"Bail Case" },
+    { icon:"bx-fist",          name:"Assault",      desc:"Offenses of voluntarily causing hurt by dangerous weapons",                tags:["323 IPC","324 IPC"],             crime:"Assault" },
 ];
 
 const CRIME_NAMES = [
@@ -322,16 +356,16 @@ const CRIME_NAMES = [
     "Kidnapping","Bail Case","Assault","Property Dispute"
 ];
 
-// ── INIT ─────────────────────────────────────────────
+// ── INIT ───────────────────────────────────────────────
 (function init() {
     const params = new URLSearchParams(window.location.search);
     const name   = params.get("user") || sessionStorage.getItem("lawloom_user") || "User";
-    document.getElementById("sidebarUserName").textContent = name;
+    document.getElementById("sidebarUserName").textContent   = name;
+    document.getElementById("userAvatarInitial").textContent = name.charAt(0).toUpperCase();
     renderTrending();
     renderCategories();
 })();
 
-// ── RENDER HOME ──────────────────────────────────────
 function renderTrending() {
     const wrap = document.getElementById("trendingChips");
     TRENDING.forEach(t => {
@@ -352,13 +386,13 @@ function renderCategories() {
             <div class="cat-icon"><i class='bx ${cat.icon}'></i></div>
             <div class="cat-name">${escapeHtml(cat.name)}</div>
             <div class="cat-desc">${escapeHtml(cat.desc)}</div>
-            <div class="cat-tags">${cat.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("")}</div>`;
+            <div class="cat-tags">${cat.tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join("")}</div>`;
         card.onclick = () => openCrimeDetail(cat.crime);
         grid.appendChild(card);
     });
 }
 
-// ── SEARCH ───────────────────────────────────────────
+// ── SEARCH ─────────────────────────────────────────────
 const searchInput    = document.getElementById("searchInput");
 const suggestionsBox = document.getElementById("searchSuggestions");
 
@@ -389,49 +423,65 @@ document.addEventListener("click", e => {
     if (!e.target.closest(".search-wrap")) suggestionsBox.classList.remove("show");
 });
 
-// ── OPEN CRIME CATEGORY ──────────────────────────────
+// ── OPEN CRIME (with legal sections + cases) ───────────
 async function openCrimeDetail(crime) {
     currentCrime = crime;
     suggestionsBox.classList.remove("show");
     showView("crime");
 
     document.getElementById("crimeTitle").textContent = crime;
-    document.getElementById("crimeMeta").textContent  = "Loading cases...";
+    document.getElementById("crimeMeta").textContent  = "Loading...";
     document.getElementById("casesList").innerHTML    = `<div class="loading-state"><div class="spinner"></div></div>`;
+    document.getElementById("legalSectionsGrid").innerHTML = `<div class="loading-state"><div class="spinner"></div></div>`;
     document.getElementById("yearFilter").value = "";
 
+    // Fetch legal sections + cases in parallel
     try {
-        const res      = await fetch(
-            `${API}/cases?category=${encodeURIComponent(crime)}`,
-            { headers: { "Authorization": `Bearer ${TOKEN}` } }
-        );
-        const data     = await res.json();
+        const [secRes, caseRes] = await Promise.all([
+            fetch(`${API}/sections/${encodeURIComponent(crime)}`),
+            fetch(`${API}/cases?category=${encodeURIComponent(crime)}`,
+                  { headers: { "Authorization": `Bearer ${TOKEN}` } })
+        ]);
 
-        if (!res.ok) throw new Error(data.message || "Failed to load cases");
+        const secData  = await secRes.json();
+        const caseData = await caseRes.json();
 
-        allCases = data.cases || [];
-        document.getElementById("crimeMeta").textContent = `${allCases.length} case${allCases.length !== 1 ? "s" : ""} found`;
+        if (!caseRes.ok) throw new Error(caseData.message || "Failed to load cases");
+
+        allCases = caseData.cases || [];
+        document.getElementById("crimeMeta").textContent =
+            `${(secData.data || []).length} legal section${(secData.data||[]).length!==1?"s":""} · ${allCases.length} case${allCases.length!==1?"s":""} found`;
+
+        renderLegalSections(secData.data || []);
         renderCases(allCases);
 
     } catch (err) {
-        document.getElementById("crimeMeta").textContent = "Could not load cases — " + err.message;
-        document.getElementById("casesList").innerHTML = `
-            <div class="empty-state">
-                <i class='bx bx-error-circle'></i>
-                <p>Failed to load cases. Make sure your server is running on port 5000.</p>
-            </div>`;
+        document.getElementById("crimeMeta").textContent = "Could not load data — " + err.message;
+        document.getElementById("legalSectionsGrid").innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class='bx bx-error-circle'></i><p>Could not load legal sections.</p></div>`;
+        document.getElementById("casesList").innerHTML = `<div class="empty-state"><i class='bx bx-error-circle'></i><p>Failed to load cases. ${escapeHtml(err.message)}</p></div>`;
     }
 }
 
-// ── RENDER CASES LIST ─────────────────────────────────
+function renderLegalSections(sections) {
+    const grid = document.getElementById("legalSectionsGrid");
+    if (!sections.length) {
+        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class='bx bx-law'></i><p>No legal sections found for this crime type.</p></div>`;
+        return;
+    }
+    grid.innerHTML = sections.map(s => `
+        <div class="legal-card">
+            <span class="legal-badge">${escapeHtml(s.section_code)}</span>
+            <h4>${escapeHtml(s.section_name)}</h4>
+            <p>${escapeHtml(s.description)}</p>
+            ${s.punishment ? `<p class="legal-punishment">⚖ ${escapeHtml(s.punishment)}</p>` : ""}
+        </div>`).join("");
+}
+
+// ── RENDER CASES ───────────────────────────────────────
 function renderCases(cases) {
     const list = document.getElementById("casesList");
     if (!cases.length) {
-        list.innerHTML = `
-            <div class="empty-state">
-                <i class='bx bx-search-alt'></i>
-                <p>No cases found for this category.</p>
-            </div>`;
+        list.innerHTML = `<div class="empty-state"><i class='bx bx-search-alt'></i><p>No cases found for this category.</p></div>`;
         return;
     }
     list.innerHTML = "";
@@ -448,7 +498,7 @@ function renderCases(cases) {
                     ${c.judge ? `<span><i class='bx bx-user'></i> ${escapeHtml(c.judge)}</span>` : ""}
                 </div>
                 <div class="case-sections">
-                    ${(c.sections || []).map(s => `<span class="case-section-tag">${escapeHtml(s)}</span>`).join("")}
+                    ${(c.sections||[]).map(s=>`<span class="case-section-tag">${escapeHtml(s)}</span>`).join("")}
                 </div>
             </div>
             <div class="case-card-right"><i class='bx bx-chevron-right'></i></div>`;
@@ -457,16 +507,14 @@ function renderCases(cases) {
     });
 }
 
-// ── YEAR FILTER ───────────────────────────────────────
 function filterCases() {
-    const year     = document.getElementById("yearFilter").value;
-    const filtered = year
+    const year = document.getElementById("yearFilter").value;
+    renderCases(year
         ? allCases.filter(c => c.date && new Date(c.date).getFullYear() === parseInt(year))
-        : allCases;
-    renderCases(filtered);
+        : allCases);
 }
 
-// ── OPEN SINGLE CASE ──────────────────────────────────
+// ── CASE DETAIL ────────────────────────────────────────
 async function openCaseDetail(caseId) {
     currentCaseId = caseId;
     showView("case");
@@ -481,221 +529,167 @@ async function openCaseDetail(caseId) {
     document.getElementById("caseBackBtn").onclick = () => showView("crime");
 
     try {
-        const res = await fetch(
-            `${API}/cases/${encodeURIComponent(caseId)}`,
-            { headers: { "Authorization": `Bearer ${TOKEN}` } }
-        );
-        const c = await res.json();
+        const res = await fetch(`${API}/cases/${encodeURIComponent(caseId)}`,
+                                { headers: { "Authorization": `Bearer ${TOKEN}` } });
+        const c   = await res.json();
         if (!res.ok) throw new Error(c.message);
 
         const year = c.date ? new Date(c.date).getFullYear() : "N/A";
-
         document.getElementById("caseDetailTitle").textContent = c.caseTitle;
         document.getElementById("caseDetailBadges").innerHTML  =
-            (c.sections || []).map(s => `<span class="detail-badge">${escapeHtml(s)}</span>`).join("");
+            (c.sections||[]).map(s=>`<span class="detail-badge">${escapeHtml(s)}</span>`).join("");
         document.getElementById("caseInfoRow").innerHTML = `
             <span><i class='bx bx-calendar'></i> ${year}</span>
-            <span><i class='bx bx-tag'></i> ${escapeHtml(c.category || "")}</span>
-            ${c.court  ? `<span><i class='bx bx-building'></i> ${escapeHtml(c.court)}</span>`  : ""}
-            ${c.judge  ? `<span><i class='bx bx-user'></i> ${escapeHtml(c.judge)}</span>`      : ""}
-            ${c.bench  ? `<span><i class='bx bx-group'></i> ${escapeHtml(c.bench)}</span>`     : ""}`;
+            <span><i class='bx bx-tag'></i> ${escapeHtml(c.category||"")}</span>
+            ${c.court ? `<span><i class='bx bx-building'></i> ${escapeHtml(c.court)}</span>` : ""}
+            ${c.judge ? `<span><i class='bx bx-user'></i> ${escapeHtml(c.judge)}</span>`     : ""}
+            ${c.bench ? `<span><i class='bx bx-group'></i> ${escapeHtml(c.bench)}</span>`    : ""}`;
         document.getElementById("judgmentText").textContent = c.fullText || "Full text not available.";
-
     } catch (err) {
         document.getElementById("caseDetailTitle").textContent = "Error loading case";
         document.getElementById("judgmentText").textContent    = "Could not load case: " + err.message;
     }
 }
 
-// ── AI SUMMARY ────────────────────────────────────────
+// ── AI SUMMARY ─────────────────────────────────────────
+let isGenerating = false;
 async function generateSummary() {
+    if (isGenerating) return;
+    isGenerating = true;
     const btn = document.getElementById("summarizeBtn");
     btn.disabled  = true;
-    btn.innerHTML = `<div class="spinner" style="width:18px;height:18px;border-width:2px;border-top-color:#0a1628;display:inline-block;"></div> Generating...`;
-
+    btn.innerHTML = `<div class="spinner" style="width:18px;height:18px;border-width:2px;border-top-color:#0a1628;"></div> Generating...`;
     try {
-        const res  = await fetch(
-            `${API}/summary/${encodeURIComponent(currentCaseId)}`,
-            { headers: { "Authorization": `Bearer ${TOKEN}` } }
-        );
+        const res  = await fetch(`${API}/summary/${encodeURIComponent(currentCaseId)}`,
+                                 { headers: { "Authorization": `Bearer ${TOKEN}` } });
         const data = await res.json();
         if (!res.ok) throw new Error(data.message);
-
-        document.getElementById("summaryText").textContent   = data.summary;
-        document.getElementById("cachedBadge").style.display = data.source === "cached" ? "inline-block" : "none";
+        document.getElementById("summaryText").textContent     = data.summary;
+        document.getElementById("cachedBadge").style.display   = data.source === "cached" ? "inline-block" : "none";
         document.getElementById("summaryBox").classList.add("show");
-
-        btn.disabled  = false;
         btn.innerHTML = `<i class='bx bx-stars'></i> ${data.source === "cached" ? "Summary Loaded (Cached)" : "Summary Generated ✓"}`;
-        showToast(data.source === "cached" ? "⚡ Loaded cached summary" : "✅ Summary generated by Gemini AI", "success");
-
     } catch (err) {
-        showToast("Failed: " + (err.message || "Unknown error"), "error");
-        btn.disabled  = false;
         btn.innerHTML = `<i class='bx bx-stars'></i> Generate AI Summary`;
     }
+    btn.disabled = false;
+    isGenerating = false;
 }
 
-// ── ANALYTICS ─────────────────────────────────────────
+// ── PDF DOWNLOAD ───────────────────────────────────────
+function downloadSummaryPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc     = new jsPDF();
+    const title   = document.getElementById("caseDetailTitle").textContent;
+    const summary = document.getElementById("summaryText").textContent;
+    doc.setFont("helvetica","bold"); doc.setFontSize(16); doc.setTextColor(40,40,40);
+    doc.text("LawLoom \u2013 AI Case Summary", 20, 20);
+    doc.setDrawColor(212,175,55); doc.setLineWidth(0.8); doc.line(20,25,190,25);
+    doc.setFontSize(13); doc.setFont("helvetica","bold"); doc.setTextColor(60,60,60);
+    doc.text("Case:", 20, 35); doc.setFont("helvetica","normal");
+    const titleLines = doc.splitTextToSize(title, 150);
+    doc.text(titleLines, 40, 35);
+    const tbh = titleLines.length * 7;
+    doc.setFont("helvetica","bold"); doc.setFontSize(12); doc.setTextColor(40,40,40);
+    doc.text("AI-Generated Summary:", 20, 45+tbh);
+    doc.setFont("helvetica","normal"); doc.setFontSize(11); doc.setTextColor(80,80,80);
+    doc.text(doc.splitTextToSize(summary,170), 20, 55+tbh);
+    doc.setFontSize(9); doc.setTextColor(150,150,150);
+    doc.text("Generated by LawLoom \u00B7 "+new Date().toLocaleDateString(), 20, 285);
+    doc.save(title.replace(/[^a-z0-9]/gi,"_").substring(0,40)+"_summary.pdf");
+    showToast("PDF downloaded successfully!", "success");
+}
+
+// ── ANALYTICS ──────────────────────────────────────────
 async function renderAnalytics() {
     const list = document.getElementById("rankList");
     list.innerHTML = `<div class="loading-state"><div class="spinner"></div></div>`;
     try {
-        // Fetch cases count by category from our MongoDB
-        const res  = await fetch(`${API}/cases`, { headers: { "Authorization": `Bearer ${TOKEN}` } });
-        const data = await res.json();
+        const res   = await fetch(`${API}/cases`, { headers: { "Authorization": `Bearer ${TOKEN}` } });
+        const data  = await res.json();
         const cases = data.cases || [];
-
-        // Count by category
-        const counts = {};
-        cases.forEach(c => {
-            counts[c.category] = (counts[c.category] || 0) + 1;
-        });
-
-        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-        if (!sorted.length) {
-            list.innerHTML = `<p style="color:var(--muted);text-align:center;">No data yet.</p>`;
-            return;
-        }
-
+        const counts= {};
+        cases.forEach(c => { counts[c.category] = (counts[c.category]||0) + 1; });
+        const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+        if (!sorted.length) { list.innerHTML=`<p style="color:var(--muted);text-align:center">No data yet.</p>`; return; }
         const max = sorted[0][1];
         list.innerHTML = "";
-        sorted.forEach(([name, count], i) => {
-            const pct = Math.round((count / max) * 100);
+        sorted.forEach(([name,count],i) => {
+            const pct = Math.round((count/max)*100);
             const row = document.createElement("div");
             row.className = "rank-item";
             row.innerHTML = `
-                <div class="rank-num ${i < 3 ? "top" : ""}">#${i+1}</div>
+                <div class="rank-num ${i<3?"top":""}">#${i+1}</div>
                 <div class="rank-info">
                     <div class="rank-name-row">
                         <span class="rank-name">${escapeHtml(name)}</span>
-                        <span class="rank-count"><i class='bx bx-bar-chart-alt-2'></i> ${count} case${count !== 1 ? "s" : ""}</span>
+                        <span class="rank-count"><i class='bx bx-bar-chart-alt-2'></i> ${count} case${count!==1?"s":""}</span>
                     </div>
                     <div class="rank-bar-bg"><div class="rank-bar" data-pct="${pct}"></div></div>
                 </div>`;
             list.appendChild(row);
         });
-
-        requestAnimationFrame(() => setTimeout(() => {
-            list.querySelectorAll(".rank-bar").forEach(bar => { bar.style.width = bar.dataset.pct + "%"; });
-        }, 80));
-
+        requestAnimationFrame(()=>setTimeout(()=>{
+            list.querySelectorAll(".rank-bar").forEach(b=>{b.style.width=b.dataset.pct+"%";});
+        },80));
     } catch {
-        list.innerHTML = `<p style="color:var(--muted);text-align:center;">Could not load analytics.</p>`;
+        list.innerHTML = `<p style="color:var(--muted);text-align:center">Could not load analytics.</p>`;
     }
 }
 
-// ── NAVIGATION ────────────────────────────────────────
+// ── NAVIGATION ─────────────────────────────────────────
 function showView(name) {
-    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-    document.getElementById("view-" + name).classList.add("active");
-    if (name === "home" || name === "analytics") {
-        document.querySelectorAll(".nav-item").forEach(l => l.classList.remove("active"));
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    document.getElementById("view-"+name).classList.add("active");
+    if (name==="home"||name==="analytics") {
+        document.querySelectorAll(".nav-item").forEach(l=>l.classList.remove("active"));
         document.querySelector(`[data-view="${name}"]`)?.classList.add("active");
     }
 }
-
 function goHome() { showView("home"); }
 
 document.querySelectorAll(".nav-item[data-view]").forEach(btn => {
     btn.addEventListener("click", function() {
         const view = this.dataset.view;
-        document.querySelectorAll(".nav-item").forEach(l => l.classList.remove("active"));
+        document.querySelectorAll(".nav-item").forEach(l=>l.classList.remove("active"));
         this.classList.add("active");
         showView(view);
-        if (view === "analytics") renderAnalytics();
+        if (view==="analytics") renderAnalytics();
         document.getElementById("sidebar").classList.remove("open");
         document.getElementById("sidebarOverlay").classList.remove("show");
     });
 });
 
-// ── TOAST ─────────────────────────────────────────────
-function showToast(msg, type = "success") {
-    const old = document.querySelector(".toast");
-    if (old) old.remove();
+// ── TOAST ──────────────────────────────────────────────
+function showToast(msg, type="success") {
+    const old = document.querySelector(".toast"); if(old) old.remove();
     const t = document.createElement("div");
     t.className = `toast toast-${type}`;
-    t.innerHTML = `<i class='bx ${type === "success" ? "bx-check-circle" : "bx-error-circle"}'></i> ${escapeHtml(msg)}`;
+    t.innerHTML = `<i class='bx ${type==="success"?"bx-check-circle":"bx-error-circle"}'></i> ${escapeHtml(msg)}`;
     document.body.appendChild(t);
-    setTimeout(() => t.classList.add("show"), 10);
-    setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.remove(), 400); }, 3500);
+    setTimeout(()=>t.classList.add("show"),10);
+    setTimeout(()=>{t.classList.remove("show");setTimeout(()=>t.remove(),400);},3500);
 }
 
-// ── SIGN OUT ──────────────────────────────────────────
+// ── SIGN OUT ───────────────────────────────────────────
 function signOut() {
-    sessionStorage.removeItem("lawloom_user");
-    sessionStorage.removeItem("lawloom_role");
-    sessionStorage.removeItem("lawloom_email");
-    sessionStorage.removeItem("lawloom_token");
+    ["lawloom_user","lawloom_role","lawloom_email","lawloom_token"].forEach(k=>sessionStorage.removeItem(k));
     window.location.href = "index.html";
 }
 
-// ── MOBILE ────────────────────────────────────────────
-document.getElementById("menuToggle").addEventListener("click", () => {
+// ── MOBILE ─────────────────────────────────────────────
+document.getElementById("menuToggle").addEventListener("click", ()=>{
     document.getElementById("sidebar").classList.toggle("open");
     document.getElementById("sidebarOverlay").classList.toggle("show");
 });
-document.getElementById("sidebarOverlay").addEventListener("click", () => {
+document.getElementById("sidebarOverlay").addEventListener("click", ()=>{
     document.getElementById("sidebar").classList.remove("open");
     document.getElementById("sidebarOverlay").classList.remove("show");
 });
 
-// ── XSS HELPER ────────────────────────────────────────
+// ── XSS ────────────────────────────────────────────────
 function escapeHtml(str) {
-    if (!str) return "";
+    if(!str) return "";
     return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
-}
-function downloadSummaryPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    const title = document.getElementById("caseDetailTitle").textContent;
-    const summary = document.getElementById("summaryText").textContent;
-
-    // Title styling
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
-    doc.setTextColor(40, 40, 40);
-    doc.text("LawLoom – AI Case Summary", 20, 20);
-
-    // Divider line
-    doc.setDrawColor(212, 175, 55);
-    doc.setLineWidth(0.8);
-    doc.line(20, 25, 190, 25);
-
-    // Case title
-    doc.setFontSize(13);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(60, 60, 60);
-    doc.text("Case:", 20, 35);
-    doc.setFont("helvetica", "normal");
-    const titleLines = doc.splitTextToSize(title, 150);
-    doc.text(titleLines, 40, 35);
-
-    // Summary heading
-    const titleBlockHeight = titleLines.length * 7;
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
-    doc.setTextColor(40, 40, 40);
-    doc.text("AI-Generated Summary:", 20, 45 + titleBlockHeight);
-
-    // Summary text
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(11);
-    doc.setTextColor(80, 80, 80);
-    const summaryLines = doc.splitTextToSize(summary, 170);
-    doc.text(summaryLines, 20, 55 + titleBlockHeight);
-
-    // Footer
-    doc.setFontSize(9);
-    doc.setTextColor(150, 150, 150);
-    doc.text("Generated by LawLoom · " + new Date().toLocaleDateString(), 20, 285);
-
-    // Save
-    const fileName = title.replace(/[^a-z0-9]/gi, "_").substring(0, 40) + "_summary.pdf";
-    doc.save(fileName);
-
-    showToast("✅ PDF downloaded successfully!", "success");
 }
 </script>
 </body>
